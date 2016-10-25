@@ -1,2 +1,5 @@
-<h1>Movies#show</h1>
-<p>Find me in app/views/movies/show.html.erb</p>
+<h1><%= @movie.title %></h1>
+<p><strong>Year</strong>: <%= @movie.year %></p>
+<p><strong>Plot</strong>: <%= @movie.plot %></p>
+<p><%= image_tag @movie.poster, width: '200px'%></p>
+<%= link_to 'Back', :back %> | <%= link_to 'Favorites', movies_path %>
