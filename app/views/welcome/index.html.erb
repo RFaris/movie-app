@@ -1,0 +1,7 @@
+<h1>Welcome, search for a movie!</h1>
+
+<%= form_tag(search_path, method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>

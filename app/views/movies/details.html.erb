@@ -1,0 +1,15 @@
+<h1><%= @movie_info["Title"] %></h1>
+<p><%= image_tag @movie_info["Poster"], id: 'movie_poster' %></p>
+<p>Year: <%= @movie_info["Year"] %></p>
+<p><%= @movie_info["Plot"] %></p>
+
+<%= simple_form_for(@movie) do |f| %>
+	<%= f.hidden_field :title, :value => @movie_info["Title"] %>
+	<%= f.hidden_field :year, :value => @movie_info["Year"] %>
+	<%= f.hidden_field :plot, :value => @movie_info["Plot"] %>
+	<%= f.hidden_field :imdb_id, :value => @movie_info["imdbID"] %>
+	<%= f.hidden_field :poster, :value => @movie_info["Poster"] %>
+	<%= f.button :submit, 'Favorite' %>
+<% end %>
+
+<%= link_to 'Back', :back %>
