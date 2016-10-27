@@ -1,13 +1,15 @@
+<%= render 'welcome/search' %>
+
 <h1>Results</h1>
 <div class="row">
 <% @movies.each do |movie| %>
-	<div class="col-md-4">
+	<div class="col-md-4 text-center">
 		<div class="thumbnail">
 			<%= link_to details_path(movie["imdbID"]) do %>
-	    <%= image_tag movie["Poster"], width: '150px' %><br>
-	    <% end %>
+	    	<%= image_tag movie["Poster"], width: '150px' %><br>
+	    	<% end %>
 			<div class="caption">
-		    <%= movie["Title"] %><br>
+		    <h3><%= movie["Title"] %></h3>
 		    <%= movie["Year"] %><br>
 		    <%= link_to 'Details', details_path(movie["imdbID"]) %>
 			</div>

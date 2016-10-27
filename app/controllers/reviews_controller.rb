@@ -16,8 +16,7 @@ class ReviewsController < ApplicationController
 
   def edit
   	if @review.user != current_user
-  		sign_out current_user
-  		redirect_to root_path
+  	    not_correct_user
   	end
   end
 
@@ -31,8 +30,7 @@ class ReviewsController < ApplicationController
   			render :edit
   		end
   	else
-  		sign_out current_user
-  		redirect_to root_path
+  	    not_correct_user
   	end
 
   end
@@ -44,8 +42,7 @@ class ReviewsController < ApplicationController
   		flash[:alert] = "Review deleted successfully."
   		redirect_to @movie
   	else
-  		sign_out current_user
-  		redirect_to root_path
+  	    not_correct_user
   	end
   end
 
@@ -53,6 +50,13 @@ class ReviewsController < ApplicationController
   	def find_review
   		@review = Review.find(params[:id])
   	end
+
+    def not_correct_user
+        flash[:alert] = "You don't have permission to edit this review."
+  		sign_out current_user
+  		redirect_to root_path
+  	end 
+        
 
   	def review_params
   		params.require(:review).permit(:body)

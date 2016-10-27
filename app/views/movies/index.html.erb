@@ -1,8 +1,37 @@
-<h1>My Favorite Movies</h1>
-<% @movies.each do |movie| %>
-	<%= link_to movie.title, movie %> | 
-        <%= link_to 'Delete', movie,
-                method: :delete, data: {confirm: 'Are you sure?'} %>
+<div class="row">
+	<div class="col-md-12">
+		<h1>My Favorite Movies</h1>
+	</div>
+</div>
+<div class="row">
+	<%= form_tag(movies_path, method: "get", class: "navbar-form navbar-left") do %>
+	  <div class="form-group col-md-8 floating-label-form-group controls">
+  	  <%= text_field_tag :search, nil, placeholder: 'Search favorites', class: 'form-control' %>
+	  </div>
+	  <div class="col-md-4">
+		  <%= submit_tag("Search", class: 'btn btn-default') %>
+	  </div>
+	<% end %>	
 	<hr>
+</div>
+<div class="row">
+<% @movies.each do |movie| %>
+	<div class="col-md-4 text-center">
+		<div class="thumbnail">
+			<%= link_to movie do %>
+		    <% if movie.poster == "N/A" %>
+		    	<%= image_tag '400.jpeg', width: '150px' %><br>
+		    <% else %>
+		      <%= image_tag movie.poster, width: '150px' %><br>
+		    <% end %>
+	    <% end %>
+			<div class="caption">
+		    <h3><%= movie.title %></h3>
+		    <%= movie.year %><br>
+			  <%= link_to 'Delete', movie,
+							      method: :delete, data: {confirm: 'Are you sure?'} %>
+			</div>
+		</div>
+	</div>  
 <% end %>
-<%= link_to 'Back', :back %>
+</div>

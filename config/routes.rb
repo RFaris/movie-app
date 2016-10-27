@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :users, only: [:show] do
-    resources :movies, inly: [:index, :show, :create, :destroy], shallow: true
+  
+  
+  resources :movies, only: [:index, :show, :create, :destroy] do
+    resources :reviews, except: [:index, :new, :show], shallow: true
   end
   
   get 'search' => 'movies#search' # search_path => /search

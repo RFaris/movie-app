@@ -1,0 +1,9 @@
+<h1>Add Review:</h1>
+<%= simple_form_for([@movie, @review], html: { class: 'form-inline' }) do |f| %>
+  <p>
+    <%= f.input :body, label: false %>
+  </p>
+  <p>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </p>
+<% end %>
